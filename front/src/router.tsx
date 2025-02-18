@@ -4,28 +4,29 @@ import { createBrowserRouter } from "react-router-dom";
 import NotFound from '@/pages/not-found/not-found';
 import { Skeleton } from "./components/ui/skeleton";
 import Leads from './pages/leads/leads';
+import CreateLead from "./pages/leads/CreateLead";
 import { AppLayout } from './components/layouts/app-layout';
 import Home from './pages/home/home';
 
-const Login = lazy(() => import('@/pages/auth/login')); 
+const Login = lazy(() => import('@/pages/auth/login'));
 const router = createBrowserRouter([
   {
     path: '/auth',
-    element: 
-    <Suspense fallback={<Loading mode="logo" />}>
-      <Login />
-    </Suspense>
+    element:
+      <Suspense fallback={<Loading mode="logo" />}>
+        <Login />
+      </Suspense>
   },
   {
     path: '/',
-    element: 
-    <Suspense fallback={<Loading mode="logo" />}>
-      <Login />
-    </Suspense>
+    element:
+      <Suspense fallback={<Loading mode="logo" />}>
+        <Login />
+      </Suspense>
   },
   {
     path: '/leads',
-    element: 
+    element:
       <AppLayout module="crm" window="contact">
         <Suspense fallback={<Loading mode="logo" />}>
           <Leads />
@@ -33,8 +34,18 @@ const router = createBrowserRouter([
       </AppLayout>
   },
   {
+    path: "/leads/create",
+    element: (
+      <AppLayout module="crm" window="contact">
+        <Suspense fallback={<Loading mode="logo" />}>
+          <CreateLead />
+        </Suspense>
+      </AppLayout>
+    ),
+  },
+  {
     path: '/home',
-    element: 
+    element:
       <AppLayout module="crm" window="contact">
         <Suspense fallback={<Loading mode="logo" />}>
           <Home />
@@ -43,19 +54,19 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: 
+    element:
       <NotFound />
   }
 ]);
 
 window['router'] = router
 
- function Loading ({mode}:{mode?:string}) {
-  if(!mode){
+function Loading({ mode }: { mode?: string }) {
+  if (!mode) {
     return (
       <Skeleton className=" w-[92vw] lg:w-[72vw] mx-auto h-[88vh] md:h-[90vh] shadow-md rounded-lg scale-[0.99]" />
     )
-  } else if (mode === 'logo'){
+  } else if (mode === 'logo') {
     return (
       <div className="flex w-[100vw] h-[100vh] items-center justify-center">
         <div className="z-20 flex items-center text-4xl bg-white w-fit px-4 py-2 rounded-md font-bold font-brand">
@@ -64,6 +75,6 @@ window['router'] = router
       </div>
     )
   }
- }
+}
 
 export default router;

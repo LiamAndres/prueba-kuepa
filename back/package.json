@@ -19,6 +19,7 @@
     "@types/node": "^20.16.5",
     "@types/ora": "^3.2.0",
     "@types/pdf-parse": "^1.1.4",
+    "@types/validator": "^13.12.2",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.47.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
@@ -52,7 +53,8 @@
     "socket.io": "^4.7.5",
     "tsc-alias": "^1.8.8",
     "twilio": "^4.19.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "validator": "^13.12.0"
   },
   "_moduleAliases": {
     "@app": "src/app",
