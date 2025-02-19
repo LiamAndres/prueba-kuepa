@@ -28,7 +28,25 @@ class LeadService {
   async getLead({ _id }: { _id: string }) {
     return await get({ api: `${this.api}/get/${_id}` });
   }
+
+  async getAllLeads() {
+    const token = authService.getToken();
+    if (!token) throw new Error("No hay token de autenticación.");
+
+    return await get({
+      api: this.api,
+      options: {
+        config: {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        },
+      },
+    });
+  }
 }
+
+
 
 const leadService = new LeadService(API);
 export default leadService;
