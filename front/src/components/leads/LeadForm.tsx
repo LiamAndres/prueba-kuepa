@@ -12,6 +12,7 @@ import { Input } from "../ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "../ui/select";
 import { Button } from "../ui/button";
 import { useState, useEffect } from "react";
+import { programs } from "@/data/programs"; // Importamos la lista de programas
 
 interface LeadFormValues {
     first_name: string;
@@ -29,20 +30,6 @@ const LeadForm = ({ onSubmit }: { onSubmit: (data: LeadFormValues) => void }) =>
         control,
         formState: { errors },
     } = useForm<LeadFormValues>();
-
-    const [programs, setPrograms] = useState<{ _id: string; name: string }[]>([]);
-
-    useEffect(() => {
-        // Simulación de IDs de MongoDB para cada programa
-        setPrograms([
-            { _id: "65d48a72b45f1a001f4d9c30", name: "Técnico laboral en auxiliar administrativo" },
-            { _id: "65d48a72b45f1a001f4d9c31", name: "Técnico laboral en mercadeo y ventas" },
-            { _id: "65d48a72b45f1a001f4d9c32", name: "Técnico laboral en hotelería y turismo" },
-            { _id: "65d48a72b45f1a001f4d9c33", name: "Técnico laboral en procesamiento y digitación de datos" },
-            { _id: "65d48a72b45f1a001f4d9c34", name: "Técnico laboral en contabilidad y finanzas" },
-            { _id: "65d48a72b45f1a001f4d9c35", name: "Bachillerato semipresencial (acelerado)" },
-        ]);
-    }, []);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white p-6 rounded-md shadow-md">
