@@ -37,6 +37,15 @@ class LeadService {
         }
       }
 
+      // validaciones extra para hacer el código más robusto.
+      if (!_params.estudio || _params.estudio.trim() === '') {
+        return responseUtility.error("lead.invalid_estudio");
+      }
+      // validaciones extra para hacer el código más robusto.
+      if (!_params.sede || _params.sede.trim() === '') {
+        return responseUtility.error("lead.invalid_sede");
+      }
+
       // 🔹 Lógica de asignación de adviser (sin cambios)
       if (_params.user) {
         const third = await Third.findOne({ user: _params.user }).lean();
