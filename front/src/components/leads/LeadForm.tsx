@@ -82,14 +82,27 @@ const LeadForm = ({ onSubmit }: { onSubmit: (data: LeadFormValues) => void }) =>
             {/* Estudio */}
             <div>
                 <label className="block text-sm font-medium">Estudio</label>
-                <Input {...register("estudio", { required: "El estudio es obligatorio" })} />
+                <Input 
+                    {...register("estudio", { 
+                        required: "El estudio es obligatorio",
+                        minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
+                        pattern: { value: /^[A-Za-z\s]+$/, message: "Solo se permiten letras y espacios" },
+                        validate: (value) => value.trim().length > 0 || "No puede ser solo espacios"
+                    })} 
+                 />
                 {errors.estudio && <p className="text-red-500 text-sm">{errors.estudio.message}</p>}
             </div>
 
             {/* Sede */}
             <div>
                 <label className="block text-sm font-medium">Sede</label>
-                <Input {...register("sede", { required: "La sede es obligatoria" })} />
+                <Input 
+                    {...register("sede", { 
+                        required: "La sede es obligatoria",
+                        pattern: { value: /^[A-Za-z\s]+$/, message: "Solo se permiten letras y espacios" },
+                        validate: (value) => value.trim().length > 0 || "No puede ser solo espacios"
+                        })} 
+                />
                 {errors.sede && <p className="text-red-500 text-sm">{errors.sede.message}</p>}
             </div>
 
