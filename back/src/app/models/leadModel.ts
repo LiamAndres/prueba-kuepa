@@ -17,6 +17,8 @@ const LeadSchema = new Schema({
   full_name: {type: Schema.Types.String},
   first_name: {type: Schema.Types.String},
   last_name: {type: Schema.Types.String},
+  estudio: {type: Schema.Types.String},
+  sede: {type: Schema.Types.String},
   email: {type: Schema.Types.String},
   mobile_phone: {type: Schema.Types.String},
   interestProgram: {type: Schema.Types.ObjectId, ref: 'Program'},
