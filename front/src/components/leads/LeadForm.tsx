@@ -17,6 +17,8 @@ import { programs } from "@/data/programs"; // Importamos la lista de programas
 interface LeadFormValues {
     first_name: string;
     last_name: string;
+    estudio: string;
+    sede: string;
     email: string;
     mobile_phone: string;
     interestProgram: string;
@@ -75,6 +77,20 @@ const LeadForm = ({ onSubmit }: { onSubmit: (data: LeadFormValues) => void }) =>
                 />
                 {errors.mobile_phone && <p className="text-red-500 text-sm">{errors.mobile_phone.message}</p>}
 
+            </div>
+
+            {/* Estudio */}
+            <div>
+                <label className="block text-sm font-medium">Estudio</label>
+                <Input {...register("estudio", { required: "El estudio es obligatorio" })} />
+                {errors.estudio && <p className="text-red-500 text-sm">{errors.estudio.message}</p>}
+            </div>
+
+            {/* Sede */}
+            <div>
+                <label className="block text-sm font-medium">Sede</label>
+                <Input {...register("sede", { required: "La sede es obligatoria" })} />
+                {errors.sede && <p className="text-red-500 text-sm">{errors.sede.message}</p>}
             </div>
 
             {/* Programa de Interés - Select con Radix UI */}
