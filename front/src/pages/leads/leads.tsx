@@ -57,6 +57,8 @@ export default function Leads(props?: LeadsProps) {
               <th className="border border-gray-300 p-2">Nombre</th>
               <th className="border border-gray-300 p-2">Email</th>
               <th className="border border-gray-300 p-2">Teléfono</th>
+              <th className="border border-gray-300 p-2">Estudio</th>
+              <th className="border border-gray-300 p-2">Sede</th>
               <th className="border border-gray-300 p-2">Programa</th>
               <th className="border border-gray-300 p-2">Estado</th>
               <th className="border border-gray-300 p-2">Fecha de Creación</th>
@@ -79,6 +81,8 @@ export default function Leads(props?: LeadsProps) {
                     <td className="border border-gray-300 p-2">{lead.first_name} {lead.last_name}</td>
                     <td className="border border-gray-300 p-2">{lead.email}</td>
                     <td className="border border-gray-300 p-2">{lead.mobile_phone}</td>
+                    <td className="border border-gray-300 p-2">{lead.estudio}</td>
+                    <td className="border border-gray-300 p-2">{lead.sede}</td>
                     <td className="border border-gray-300 p-2">{programName}</td>
                     <td className="border border-gray-300 p-2">{lead.status}</td>
                     <td className="border border-gray-300 p-2">{new Date(lead.created_at).toLocaleDateString()}</td>
